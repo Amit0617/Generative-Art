@@ -7,12 +7,12 @@ function Circle(x, y) {
 
   this.grow = function() {
     if (this.growing) {
-      this.r += 0.5;
+      this.r += 2;
     }
   };
 
   this.show = function() {
-    stroke('red');
+    stroke('white');
     strokeWeight(2);
     noFill();
     ellipse(this.x, this.y, this.r * 2, this.r * 2);
