@@ -3,14 +3,14 @@ var spots;
 var img;
 //p5.js starter function
 function preload() {
-img = loadImage('files/helloworld.png');
+img = loadImage('files/file.png');
   
 }
-var newimg = documentgetElementbyId("image");
+//var newimg = documentgetElementbyId("image");
 
 //another important function of p5.js
 function setup() {
-  createCanvas(newimg.naturalWidth, newimg.naturalHeight);
+  createCanvas(1920 , 1080);
   var density = displayDensity();
   pixelDensity(1);
   img.loadPixels();
@@ -49,7 +49,7 @@ function draw() {
       count++;
     }
     attempts++;
-    if (attempts > 10) {
+    if (attempts > 1000) {
       noLoop();
       console.log('finished');
       break;
@@ -105,13 +105,16 @@ function newCircle() {
   }
 }
 
-function processNewFile(file_list){
+/*function processNewFile(file_list){
   let file = file_list[0];
   console.log(URL.createObjectURL(file))
   img = loadImage(URL.createObjectURL(file));
   setup();
+}*/
+function processNewFile(){
+  img = fileInput;
+  setup();
 }
-
 
 const fileInput = document.getElementById('image');
 
