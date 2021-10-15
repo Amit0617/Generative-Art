@@ -1,22 +1,14 @@
 var circles;
 var spots;
 var img;
-
+//p5.js starter function
 function preload() {
-//  img = loadImage('assets/2017.png');
-  names = ["Hello, World!", "Amit Kumar Mishra", "MLH"]
-  files = ["files/helloworld", "files/amit", "files/mlh"]
-  var i = 0, numLoading = 3;
-    const onload = () => --numLoading === 0 && onAllLoaded();
-    const images = {};
-    while (i < 3) {
-        const img = images[names[i]] = new Image;
-        img.src = files[i++] + ".png";
-        img.onload = onload;
-    }   
-    return images;
+img = loadImage('files/helloworld.png');
+  
 }
 var newimg = documentgetElementbyId("image");
+
+//another important function of p5.js
 function setup() {
   createCanvas(newimg.naturalWidth, newimg.naturalHeight);
   var density = displayDensity();
@@ -41,7 +33,7 @@ function setup() {
   console.log('spots', spots.length);
   console.log(density);
 }
-
+//p5.js draw function
 function draw() {
   background(0);
   // frameRate(20)
@@ -112,3 +104,15 @@ function newCircle() {
     return null;
   }
 }
+
+function processNewFile(file_list){
+  let file = file_list[0];
+  console.log(URL.createObjectURL(file))
+  img = loadImage(URL.createObjectURL(file));
+  setup();
+}
+
+
+const fileInput = document.getElementById('image');
+
+fileInput.addEventListener('change', (e) => processNewFile(e.target.files));
